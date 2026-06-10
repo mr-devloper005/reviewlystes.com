@@ -17,6 +17,11 @@ body {
   background-image: var(--slot4-body-gradient) !important;
 }
 
+:root {
+  --editable-container: 1180px;
+  --editable-module-border: rgba(0, 0, 0, 0.08);
+}
+
 ::selection {
   background: color-mix(in oklab, var(--slot4-accent-fill) 22%, transparent);
   color: var(--slot4-page-text);
@@ -35,10 +40,191 @@ body {
   background: color-mix(in oklab, var(--slot4-accent) 62%, transparent);
 }
 
+.article-content {
+  color: #171717;
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+.article-content p {
+  margin: 0 0 1.55rem;
+}
+
+.article-content h2,
+.article-content h3 {
+  color: #0f0f0f;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 2.25rem 0 1rem;
+}
+
 .article-content h2 {
-  color: var(--slot4-accent);
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+}
+
+.article-content h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
 }
 
 .article-content a {
   color: var(--slot4-accent-fill);
+}
+
+.article-content ul,
+.article-content ol {
+  margin: 0 0 1.6rem 1.35rem;
+}
+
+.article-content li {
+  margin: 0.35rem 0;
+}
+
+.article-content ul {
+  list-style: square;
+}
+
+.article-content blockquote {
+  border: 0;
+  color: var(--slot4-accent);
+  font-size: clamp(1.55rem, 3vw, 2.3rem);
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.22;
+  margin: 2.6rem auto;
+  max-width: 760px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.article-content img {
+  display: block;
+  margin: 2.2rem auto;
+  max-width: 100%;
+}
+
+.editable-article-shell {
+  background: #fff;
+  border: 1px solid var(--editable-module-border);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.editable-article-ad {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.24), rgba(0,0,0,0.78)),
+    linear-gradient(135deg, #313638, #0d1117 55%, #262a30);
+  min-height: 250px;
+}
+
+.editable-section-heading {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.editable-section-heading::before {
+  background: var(--slot4-accent);
+  content: "";
+  flex: 0 0 12px;
+  height: 12px;
+}
+
+.editable-section-heading::after {
+  background: linear-gradient(90deg, rgba(0,0,0,0.1), rgba(0,0,0,0.04));
+  content: "";
+  flex: 1 1 auto;
+  height: 10px;
+}
+
+.editable-news-module {
+  background: #fff;
+  border: 1px solid var(--editable-module-border);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+}
+
+.editable-story-overlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0.02) 10%, rgba(0,0,0,0.78) 100%);
+}
+
+.editable-kicker {
+  background: var(--slot4-accent);
+  color: #fff;
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  padding: 7px 9px;
+  text-transform: uppercase;
+}
+
+.editable-animate-rise {
+  animation: editableRise 0.65s ease both;
+}
+
+.editable-animate-soft-pop {
+  animation: editableSoftPop 0.7s ease both;
+}
+
+.editable-card-float {
+  animation: editableFloat 5s ease-in-out infinite;
+}
+
+.editable-card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.editable-card-shine::after {
+  background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.24) 42%, transparent 72%);
+  content: "";
+  inset: 0 auto 0 -90%;
+  pointer-events: none;
+  position: absolute;
+  transform: skewX(-18deg);
+  transition: left 0.75s ease;
+  width: 60%;
+}
+
+.editable-card-shine:hover::after {
+  left: 130%;
+}
+
+@keyframes editableRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes editableSoftPop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes editableFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editable-animate-rise,
+  .editable-animate-soft-pop,
+  .editable-card-float {
+    animation: none;
+  }
 }

@@ -11,18 +11,18 @@ export type Slot4VisualPreset =
 
 export const visualPresets = {
   'editorial-paper': {
-    label: 'Editorial Paper',
-    mood: 'calm magazine authority',
-    fontDirection: 'serif headlines with quiet sans body',
+    label: 'Editorial Bulletin',
+    mood: 'clean news magazine energy',
+    fontDirection: 'bold sans headlines with readable body copy',
     colors: {
-      background: '#f7efe3',
-      foreground: '#201711',
-      muted: '#7b6253',
-      primary: '#261811',
-      accent: '#b76e45',
-      surface: '#fffaf2',
+      background: '#f7f7f5',
+      foreground: '#202125',
+      muted: '#6b6b6b',
+      primary: '#202125',
+      accent: '#f0a11f',
+      surface: '#ffffff',
     },
-    shape: 'soft editorial cards with fine borders',
+    shape: 'compact editorial cards, image grids, and fine dividers',
   },
   'luxury-atelier': {
     label: 'Luxury Atelier',
