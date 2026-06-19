@@ -7,6 +7,7 @@ import { buildPostUrl, fetchArticleComments, fetchTaskPostBySlug, fetchTaskPosts
 import { getTaskConfig, type TaskKey } from '@/lib/site-config'
 import type { SitePost } from '@/lib/site-connector'
 import { EditableSiteShell } from '@/editable/shell/EditableSiteShell'
+import { AdInlineBand, AdStack } from '@/editable/components/AdSlots'
 import { getVisualPreset, visualSystem } from '@/editable/theme/visual-system'
 import { slot4BrandConfig } from '@/editable/theme/brand.config'
 
@@ -215,6 +216,7 @@ function ArticleDetail({ post, related, comments }: { post: SitePost; related: S
           ) : null}
           <ArticleShareBar post={post} />
           <BodyContent post={post} />
+          <AdInlineBand className="mt-10" />
           <ArticleSourceStrip post={post} />
           <ArticleRelatedGrid related={related} />
           <EditableComments slug={post.slug} comments={comments} />
@@ -285,6 +287,7 @@ function ArticleSidebar({ post, related }: { post: SitePost; related: SitePost[]
   const sidebarPosts = related.length ? related : [post]
   return (
     <aside className="space-y-7 lg:sticky lg:top-24">
+      <AdStack surface="detailSidebar" />
       <ArticleSidebarBlock title={`Follow ${slot4BrandConfig.siteName}`}>
         <div className="grid grid-cols-3 gap-1">
           {[
@@ -613,6 +616,7 @@ function RelatedPanel({ task, post, related, compact = false }: { task: TaskKey;
   const taskConfig = getTaskConfig(task)
   return (
     <aside className="min-w-0 space-y-5">
+      <AdStack surface="detailSidebar" />
       {!compact ? (
         <div className="editable-news-module rounded-md p-5 backdrop-blur">
           <p className="text-xs font-black uppercase tracking-[0.22em] opacity-55">About this post</p>
